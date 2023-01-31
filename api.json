@@ -1,0 +1,147 @@
+{
+  "openapi":"3.0.3",
+  "info" : {
+    "title" : "Todo List Nodejs",
+    "description" : "Belajar Nodejs",
+    "version" : "1.0.0"
+  },
+  "servers" : [
+    {
+      "url" : "http://localhost:3000"
+    }
+  ],
+  "path" : {
+    "/":{
+      "get" : {
+        "response" : {
+          "200" : {
+            "description" : "Get all todolists",
+            "content" : {
+              "application/json": {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "todo" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "response" : {
+          "200" : {
+            "description" : "Create New Todo",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "response" : {
+          "200" : {
+            "description" : "Delete Todo",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "number"
+                  },
+                  "todo" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "response" : {
+          "200" : {
+            "description" : "Update Todo",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Response" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "number"
+          },
+          "status" : {
+            "type" : "string"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "type" : "object",
+              "properties" : {
+                "id" : {
+                  "type" : "number"
+                },
+                "todo" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
